@@ -1,15 +1,20 @@
 package pl.dominisz.springpetcliniclite.pet;
 
-import pl.dominisz.springpetcliniclite.visit.Visit;
+import lombok.Getter;
+import lombok.Setter;
 import pl.dominisz.springpetcliniclite.owner.Owner;
 import pl.dominisz.springpetcliniclite.pettype.PetType;
+import pl.dominisz.springpetcliniclite.visit.Visit;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "pets")
+@Getter
+@Setter
 public class Pet {
 
   @Id
@@ -33,5 +38,5 @@ public class Pet {
   private Owner owner;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
-  private List<Visit> visits;
+  private List<Visit> visits = new ArrayList<>();
 }
