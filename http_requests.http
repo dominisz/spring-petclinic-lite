@@ -1,0 +1,30 @@
+GET http://localhost:8080/pettypes
+Accept: application/json
+
+###
+
+GET http://localhost:8080/pettypes/2
+Accept: application/json
+
+###
+
+
+POST http://localhost:8080/pettypes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "snake"
+}
+
+###
+
+POST http://localhost:8080/pettypes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "dog"
+}
+
+###
