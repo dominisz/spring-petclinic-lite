@@ -1,12 +1,17 @@
 package pl.dominisz.springpetcliniclite.owner;
 
+import lombok.Getter;
+import lombok.Setter;
 import pl.dominisz.springpetcliniclite.pet.Pet;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "owners")
+@Getter
+@Setter
 public class Owner {
 
   @Id
@@ -30,6 +35,5 @@ public class Owner {
   private String telephone;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
-  private List<Pet> pets;
-
+  private List<Pet> pets = new ArrayList<>();
 }

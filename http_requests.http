@@ -28,3 +28,32 @@ Accept: application/json
 }
 
 ###
+
+POST http://localhost:8080/owners
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Adam",
+  "lastName": "Nowak",
+  "address": "Morwowa 1",
+  "city": "Lublin",
+  "telephone": "123456789"
+}
+
+###
+
+GET http://localhost:8080/owners
+Accept: application/json
+
+###
+
+GET http://localhost:8080/owners/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/owners/lastname/owa
+Accept: application/json
+
+###
