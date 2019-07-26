@@ -1,6 +1,7 @@
 package pl.dominisz.springpetcliniclite.pettype;
 
 import org.springframework.stereotype.Service;
+import pl.dominisz.springpetcliniclite.exception.DuplicatedResourceException;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,10 +17,11 @@ public class PetTypeServiceImpl implements PetTypeService {
 
   @Override
   public PetType save(PetType petType) {
-    if (!petTypeRepository.existsByName(petType.getName())) {
-      return petTypeRepository.save(petType);
+    if (petTypeRepository.existsByName(petType.getName())) {
+      throw new DuplicatedResourceException(
+          "Pet type with name " + petType.getName() + " already exists");
     }
-    throw new RuntimeException("PetType " + petType.getName() + " already exists");
+    return petTypeRepository.save(petType);
   }
 
   @Override

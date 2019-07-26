@@ -1,6 +1,7 @@
 package pl.dominisz.springpetcliniclite.owner;
 
 import org.springframework.stereotype.Service;
+import pl.dominisz.springpetcliniclite.exception.DuplicatedResourceException;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,7 @@ public class OwnerServiceImpl implements OwnerService {
   @Override
   public OwnerResponse save(CreateOwnerRequest createOwnerRequest) {
     if (ownerRepository.existsByTelephone(createOwnerRequest.getTelephone())) {
-      throw new RuntimeException(
+      throw new DuplicatedResourceException(
           "Owner with telephone " + createOwnerRequest.getTelephone() + " already exists");
     }
 

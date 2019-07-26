@@ -1,6 +1,7 @@
 package pl.dominisz.springpetcliniclite.visit;
 
 import org.springframework.stereotype.Service;
+import pl.dominisz.springpetcliniclite.exception.ResourceNotFoundException;
 import pl.dominisz.springpetcliniclite.pet.Pet;
 import pl.dominisz.springpetcliniclite.pet.PetRepository;
 
@@ -42,6 +43,8 @@ public class VisitServiceImpl implements VisitService {
   }
 
   private Pet findPet(Integer petId) {
-    return petRepository.findById(petId).orElseThrow(() -> new RuntimeException("Pet not found"));
+    return petRepository
+        .findById(petId)
+        .orElseThrow(() -> new ResourceNotFoundException("Pet with id " + petId + " not found"));
   }
 }

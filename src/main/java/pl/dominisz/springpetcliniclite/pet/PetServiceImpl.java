@@ -1,6 +1,7 @@
 package pl.dominisz.springpetcliniclite.pet;
 
 import org.springframework.stereotype.Service;
+import pl.dominisz.springpetcliniclite.exception.ResourceNotFoundException;
 import pl.dominisz.springpetcliniclite.owner.Owner;
 import pl.dominisz.springpetcliniclite.owner.OwnerRepository;
 import pl.dominisz.springpetcliniclite.pettype.PetType;
@@ -51,10 +52,12 @@ public class PetServiceImpl implements PetService {
   private PetType findPetType(Integer id) {
     return petTypeRepository
         .findById(id)
-        .orElseThrow(() -> new RuntimeException("PetType not found"));
+        .orElseThrow(() -> new ResourceNotFoundException("Pet type with id " + id + " not found"));
   }
 
   private Owner findOwner(Integer id) {
-    return ownerRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+    return ownerRepository
+        .findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " not found"));
   }
 }
