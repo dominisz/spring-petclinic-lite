@@ -65,8 +65,30 @@ Accept: application/json
 {
   "name": "Azor",
   "birthDate": "2018-04-13",
-  "petTypeId": 2,
-  "ownerId": 4
+  "petTypeId": 1,
+  "ownerId": 3
+}
+
+###
+
+GET http://localhost:8080/pets
+Accept: application/json
+
+###
+
+GET http://localhost:8080/pets/4/visits
+Accept: application/json
+
+###
+
+POST http://localhost:8080/visits
+Content-Type: application/json
+Accept: application/json
+
+{
+  "date": "2019-08-08",
+  "description": "badanie",
+  "petId": 4
 }
 
 ###

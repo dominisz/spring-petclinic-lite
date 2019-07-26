@@ -1,5 +1,7 @@
 package pl.dominisz.springpetcliniclite.visit;
 
+import lombok.Getter;
+import lombok.Setter;
 import pl.dominisz.springpetcliniclite.pet.Pet;
 
 import javax.persistence.*;
@@ -7,6 +9,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "visits")
+@Getter
+@Setter
 public class Visit {
 
   @Id
