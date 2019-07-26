@@ -3,6 +3,9 @@ package pl.dominisz.springpetcliniclite.pet;
 import org.springframework.stereotype.Component;
 import pl.dominisz.springpetcliniclite.owner.OwnerConverter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class PetConverter {
 
@@ -22,5 +25,9 @@ public class PetConverter {
     response.setOwner(ownerConverter.convert(pet.getOwner()));
 
     return response;
+  }
+
+  public List<PetResponse> convert(List<Pet> pets) {
+    return pets.stream().map(this::convert).collect(Collectors.toList());
   }
 }

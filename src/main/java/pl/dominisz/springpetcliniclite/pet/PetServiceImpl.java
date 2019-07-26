@@ -6,6 +6,8 @@ import pl.dominisz.springpetcliniclite.owner.OwnerRepository;
 import pl.dominisz.springpetcliniclite.pettype.PetType;
 import pl.dominisz.springpetcliniclite.pettype.PetTypeRepository;
 
+import java.util.List;
+
 @Service
 public class PetServiceImpl implements PetService {
 
@@ -39,6 +41,11 @@ public class PetServiceImpl implements PetService {
     owner.getPets().add(pet);
 
     return petConverter.convert(petRepository.save(pet));
+  }
+
+  @Override
+  public List<PetResponse> findAll() {
+    return petConverter.convert(petRepository.findAll());
   }
 
   private PetType findPetType(Integer id) {
