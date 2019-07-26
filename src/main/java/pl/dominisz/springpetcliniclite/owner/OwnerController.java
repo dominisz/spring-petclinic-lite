@@ -16,22 +16,22 @@ public class OwnerController {
   }
 
   @PostMapping
-  public ResponseEntity<Owner> save(@RequestBody Owner owner) {
+  public ResponseEntity<OwnerResponse> save(@RequestBody CreateOwnerRequest owner) {
     return ResponseEntity.ok(ownerService.save(owner));
   }
 
   @GetMapping
-  public ResponseEntity<List<Owner>> findAll() {
+  public ResponseEntity<List<OwnerResponse>> findAll() {
     return ResponseEntity.ok(ownerService.findAll());
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Owner> findById(@PathVariable Integer id) {
+  public ResponseEntity<OwnerResponse> findById(@PathVariable Integer id) {
     return ResponseEntity.of(ownerService.findById(id));
   }
 
   @GetMapping("/lastname/{lastName}")
-  public ResponseEntity<List<Owner>> findByLastName(@PathVariable String lastName) {
+  public ResponseEntity<List<OwnerResponse>> findByLastName(@PathVariable String lastName) {
     return ResponseEntity.ok(ownerService.findByLastName(lastName));
   }
 }

@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OwnerService {
-  Owner save(Owner owner);
+  OwnerResponse save(CreateOwnerRequest owner);
 
-  List<Owner> findAll();
+  List<OwnerResponse> findAll();
 
-  Optional<Owner> findById(Integer id);
+  Optional<OwnerResponse> findById(Integer id);
 
-  List<Owner> findByLastName(String lastName);
+  List<OwnerResponse> findByLastName(String lastName);
 }
